@@ -26,7 +26,7 @@
       .then(paintings => {
         paintings.forEach(painting => {
           const tr = document.createElement('tr')
-          Object.keys(painting).forEach((key, index) => {
+          Object.keys(painting).forEach(key => {
             const td = document.createElement('td')
             td.innerHTML = painting[key]
             tr.appendChild(td)
