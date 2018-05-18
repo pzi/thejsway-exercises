@@ -13,9 +13,17 @@
   <ul id="languageList">
   </ul>
   <script>
+    const languageList = document.querySelector('#languageList')
+
     fetch('./languages.txt')
       .then(response => response.text())
-      .then(text => console.log(text))
+      .then(text => {
+        text.split(';').forEach(language => {
+          const li = document.createElement('li')
+          li.innerHTML = language
+          languageList.appendChild(li)
+        })
+      })
       .catch(err => console.err(err.message))
   </script>
 </body>
