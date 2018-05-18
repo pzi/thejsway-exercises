@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chapter 21 Exercise 2</title>
+</head>
+
+<body>
+  <h2>Some famous paintings</h2>
+  <table id="paintings">
+    <tr>
+      <th>Name</th>
+      <th>Year</th>
+      <th>Artist</th>
+    </tr>
+  </table>
+
+  <script>
+    const table = document.querySelector('#paintings')
+
+    fetch('./paintings.json')
+      .then(response => response.json())
+      .then(paintings => {
+        paintings.forEach(painting => {
+          const tr = document.createElement('tr')
+          Object.keys(painting).forEach((key, index) => {
+            const td = document.createElement('td')
+            td.innerHTML = painting[key]
+            tr.appendChild(td)
+          })
+          table.appendChild(tr)
+        });
+      })
+      .catch(err => console.err(err.message))
+  </script>
+</body>
+
+</html>
